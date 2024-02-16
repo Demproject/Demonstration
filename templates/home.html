@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid" style="background-color:DarkSalmon;">
+    <div class="row" style="background-color:DarkSalmon;">
+        <div class="col-md-12">
+            <div class="banner" style="background-color:DarkSalmon;">
+                <div class="banner-text" class="text-justify">
+                  <h1><b> To Do List </b> </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-bg" style="background-color:LightSalmon;">
+<div class="container-fluid" >
+    <div class="row" >
+      <div class="col-md-6">
+        <form method="POST" class="p-3 shadow" style="background-color:PeachPuff;">
+               {% csrf_token %}
+       <div class="form-group">
+        <input type="date" name="date" placeholder="Enter the date"style="background-color:PeachPuff" ><br>
+       </div>
+       <div class="form-group">
+       <input type="text" name="name" placeholder="Enter the task" style="background-color:PeachPuff" ><br>
+       </div>
+       <div class="form-group">
+       <input type="text" name="priority" placeholder="Enter the priority" style="background-color:PeachPuff" ><br>
+       </div>
+       <input type="submit" class="btn btn-success"><br>
+       </form>
+      </div>
+
+      <div class="col-md-6">
+          <div class="card" style="background-color:PeachPuff" >
+               <h5 class="card-title">Tasks To Be Completed</h5>
+                  {% for i in task1 %}
+                    <div class="shadow card">
+                        <div class="card-body" style="background-color:PeachPuff" >
+
+                            <h6 class="card-subtitle mb-2 text-muted"><b>{{i.name}}</b></h6><br>
+                            <h6 class="card-subtitle mb-2 text-muted"> {{i.priority}}</h6><br>
+                             <h6 class="card-subtitle mb-2 text-muted"> {{i.date}}</h6><br>
+                               <a href="{% url 'delete' i.id %}" class="btn btn-danger">Done</a>
+                               <a href="{% url 'update' i.id %}" class="btn btn-success">Update</a>
+                      <div>
+                          </div>
+                      </div>
+                       {% endfor %}
+
+                        
+  </div>
+</div>
+        </div>
+          </div>
+
+    </div>
+   </div>
+ </div>
+ </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+{% for i in task %}
+
+ {{i.date}}<br>
+ {{i.name}}<br>
+ {{i.priority}}<br>
+
+{% endfor %}
+
+{% endblock %}
